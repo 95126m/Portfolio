@@ -6,6 +6,7 @@ const theme = {
     orange: '#ff9500'
   },
   fontSize: {
+    xxxxs: '16px',
     xxxs: '20px',
     xxs: '24px',
     xs: '28px',

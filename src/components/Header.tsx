@@ -18,20 +18,22 @@ const Header: React.FC = () => {
 
   return (
     <header style={headerStyle}>
-      <img
-        src={Logo}
-        alt="Logo"
-        style={logoStyle}
-      />
+      <a href="#home">
+        <img
+          src={Logo}
+          alt="Logo"
+          style={logoStyle}
+        />
+      </a>
       <nav style={navContainerStyle}>
         <ul style={navStyle}>
           <li style={navItemStyle}>
             <div style={numberStyle}>
               <h3>01</h3>
               <a
-                href="#home"
-                style={linkStyle('home')}
-                onMouseEnter={() => handleMouseEnter('home')}
+                href="#about"
+                style={linkStyle('about')}
+                onMouseEnter={() => handleMouseEnter('about')}
                 onMouseLeave={handleMouseLeave}>
                 소개
               </a>
@@ -41,9 +43,9 @@ const Header: React.FC = () => {
             <div style={numberStyle}>
               <h3>02</h3>
               <a
-                href="#about"
-                style={linkStyle('about')}
-                onMouseEnter={() => handleMouseEnter('about')}
+                href="#skill"
+                style={linkStyle('skill')}
+                onMouseEnter={() => handleMouseEnter('skill')}
                 onMouseLeave={handleMouseLeave}>
                 기술
               </a>
@@ -53,9 +55,9 @@ const Header: React.FC = () => {
             <div style={numberStyle}>
               <h3>03</h3>
               <a
-                href="#projects"
-                style={linkStyle('projects')}
-                onMouseEnter={() => handleMouseEnter('projects')}
+                href="#project1"
+                style={linkStyle('project1')}
+                onMouseEnter={() => handleMouseEnter('project1')}
                 onMouseLeave={handleMouseLeave}>
                 프로젝트
               </a>

@@ -5,7 +5,6 @@ import theme from './Theme'
 const GlobalStyles = () => {
   const [scrollPercentage, setScrollPercentage] = useState(0)
 
-  // 스크롤 이벤트 핸들러
   const handleScroll = () => {
     const scrollTop = window.scrollY
     const docHeight = document.documentElement.scrollHeight - window.innerHeight
@@ -34,6 +33,7 @@ const GlobalStyles = () => {
           color: ${theme.colors.white};
           height: 100%;
           width: 100%;
+          overflow-y: scroll;
           overflow-x: hidden;
         }
 
@@ -80,7 +80,7 @@ const GlobalStyles = () => {
 
         .scroll-bar {
           position: fixed;
-          bottom: 6vh;
+          top: 95%;
           left: 50%;
           transform: translateX(-50%);
           width: 20%;
@@ -93,6 +93,20 @@ const GlobalStyles = () => {
           height: 100%;
           width: ${scrollPercentage}%;
           background-color: ${theme.colors.orange};
+        }
+
+        body::-webkit-scrollbar {
+          height: 12px;
+          width: 0px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+          background: ${theme.colors.orange};
+          border-radius: 10px;
+        }
+
+        body::-webkit-scrollbar:vertical {
+          display: none;
         }
       `}
     />
