@@ -1,8 +1,13 @@
 import { Global, css } from '@emotion/react'
 import { useEffect, useState } from 'react'
 import theme from './Theme'
+import backgroundImg from '../assets/background.jpg'
 
-const GlobalStyles = () => {
+interface GlobalStylesProps {
+  isLoading: boolean
+}
+
+const GlobalStyles: React.FC<GlobalStylesProps> = ({ isLoading }) => {
   const [scrollPercentage, setScrollPercentage] = useState(0)
 
   const handleScroll = () => {
@@ -14,7 +19,6 @@ const GlobalStyles = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
-
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -23,18 +27,33 @@ const GlobalStyles = () => {
       styles={css`
         * {
           box-sizing: border-box;
-          margin: 0;
-          padding: 0;
         }
 
         body {
           font-family: 'Arial', sans-serif;
-          background-color: ${theme.colors.background};
           color: ${theme.colors.white};
-          height: 100%;
           width: 100%;
+          height: 100%;
           overflow-y: scroll;
           overflow-x: hidden;
+          margin: 0;
+          padding: 0;
+          position: relative;
+        }
+
+        body::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: url(${backgroundImg}) no-repeat center center fixed;
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          filter: brightness(0.2);
+          z-index: -1;
         }
 
         h1,
@@ -48,7 +67,7 @@ const GlobalStyles = () => {
 
         a {
           text-decoration: none;
-          color: inherit;
+          color: none;
         }
 
         ul {
@@ -57,7 +76,6 @@ const GlobalStyles = () => {
 
         html {
           font-size: 16px;
-          height: 100%;
           scroll-behavior: smooth;
         }
 
@@ -69,8 +87,13 @@ const GlobalStyles = () => {
           font-weight: 500;
           font-family: inherit;
           background-color: #1a1a1a;
-          cursor: pointer;
+          color: none;
           transition: border-color 0.25s;
+        }
+
+        button:hover,
+        a:hover {
+          cursor: none; 
         }
 
         button:focus,
@@ -87,6 +110,7 @@ const GlobalStyles = () => {
           height: 3px;
           background-color: ${theme.colors.white};
           z-index: 9;
+          display: ${isLoading ? 'none' : 'block'};
         }
 
         .scroll-bar-progress {

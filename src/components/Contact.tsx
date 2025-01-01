@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { css } from '@emotion/react'
 import theme from '../styles/Theme'
+import { motion } from 'framer-motion'
 import EmailIcon from '@mui/icons-material/Email'
 import DraftsIcon from '@mui/icons-material/Drafts'
 
@@ -13,11 +14,34 @@ const Contact: React.FC = () => {
   return (
     <div css={wrapperStyle}>
       <div className="content">
-        <div className="wrapper">
-          <h1>감사합니다!</h1>
+        <motion.div
+          className="wrapper"
+          initial={{
+            opacity: 0,
+            x: 200
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0
+          }}
+          transition={{
+            type: 'spring',
+            delay: 1
+          }}>
+          <motion.h1
+            animate={{
+              color: [theme.colors.white, theme.colors.orange, theme.colors.orange],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatType: 'reverse',
+              ease: 'easeInOut',
+            }}
+          >감사합니다!</motion.h1>
           <p>
-            제자리에 머무는 것이 아닌 발전을 위해 새로운 시도와 배움을 꾸준히 하는 개발자가
-            되고싶습니다.
+            제자리에 머무는 것이 아닌 발전을 위해 새로운 시도와 배움을 꾸준히
+            하는 개발자가 되고싶습니다.
           </p>
           <div
             css={iconWrapperStyle}
@@ -30,7 +54,7 @@ const Contact: React.FC = () => {
               <EmailIcon css={emailIconStyle} />
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
       <div className="last-section">
         <span>본 사이트는 포트폴리오용으로 제작되었습니다.</span>
@@ -77,7 +101,7 @@ const wrapperStyle = css`
 `
 
 const iconWrapperStyle = css`
-  display: inline-flex; 
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
