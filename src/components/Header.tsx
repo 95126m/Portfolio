@@ -1,5 +1,8 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import React, { useState } from 'react'
 import Logo from '../assets/logo.png'
+import theme from '../styles/Theme'
 
 const Header: React.FC = () => {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null)
@@ -7,68 +10,47 @@ const Header: React.FC = () => {
   const handleMouseEnter = (link: string) => setHoveredLink(link)
   const handleMouseLeave = () => setHoveredLink(null)
 
-  const linkStyle = (link: string): React.CSSProperties => ({
-    color: hoveredLink === link ? '#ff9500' : '#fff',
-    textDecoration: 'none',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    transition: 'color 0.3s'
-  })
-
   return (
-    <header style={headerStyle}>
+    <header css={headerStyle}>
       <a href="#home">
         <img
           src={Logo}
           alt="Logo"
-          style={logoStyle}
+          css={logoStyle}
         />
       </a>
-      <nav style={navContainerStyle}>
-        <ul style={navStyle}>
-          <li style={navItemStyle}>
-            <div style={numberStyle}>
+      <nav css={navContainerStyle}>
+        <ul css={navStyle}>
+          <li css={navItemStyle}>
+            <div css={numberStyle}>
               <h3>01</h3>
               <a
                 href="#about"
-                style={linkStyle('about')}
+                css={linkStyle(hoveredLink === 'about')}
                 onMouseEnter={() => handleMouseEnter('about')}
                 onMouseLeave={handleMouseLeave}>
                 소개
               </a>
             </div>
           </li>
-          <li style={navItemStyle}>
-            <div style={numberStyle}>
+          <li css={navItemStyle}>
+            <div css={numberStyle}>
               <h3>02</h3>
               <a
-                href="#skill"
-                style={linkStyle('skill')}
-                onMouseEnter={() => handleMouseEnter('skill')}
-                onMouseLeave={handleMouseLeave}>
-                기술
-              </a>
-            </div>
-          </li>
-          <li style={navItemStyle}>
-            <div style={numberStyle}>
-              <h3>03</h3>
-              <a
                 href="#project1"
-                style={linkStyle('project1')}
+                css={linkStyle(hoveredLink === 'project1')}
                 onMouseEnter={() => handleMouseEnter('project1')}
                 onMouseLeave={handleMouseLeave}>
                 프로젝트
               </a>
             </div>
           </li>
-          <li style={navItemStyle}>
-            <div style={numberStyle}>
-              <h3>04</h3>
+          <li css={navItemStyle}>
+            <div css={numberStyle}>
+              <h3>03</h3>
               <a
                 href="#contact"
-                style={linkStyle('contact')}
+                css={linkStyle(hoveredLink === 'contact')}
                 onMouseEnter={() => handleMouseEnter('contact')}
                 onMouseLeave={handleMouseLeave}>
                 이메일
@@ -81,43 +63,57 @@ const Header: React.FC = () => {
   )
 }
 
-const headerStyle: React.CSSProperties = {
-  padding: '20px 72px',
-  position: 'sticky',
-  top: 0,
-  width: '100%',
-  zIndex: 9,
-  display: 'flex',
-  justifyContent: 'space-between'
-}
-
-const navContainerStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center'
-}
-
-const navStyle: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'end',
-  listStyleType: 'none',
-  margin: 0,
-  padding: 0
-}
-
-const navItemStyle: React.CSSProperties = {
-  margin: '0 15px'
-}
-
-const logoStyle: React.CSSProperties = {
-  width: '60px',
-  height: 'auto'
-}
-
-const numberStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '8px',
-  color: '#ff9500'
-}
-
 export default Header
+
+const headerStyle = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0 11rem;
+  width: 100%;
+  z-index: 8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  background-color: rgba(0, 0, 0, 0.9);
+`;
+
+const navContainerStyle = css`
+  display: flex;
+  align-items: center;
+`
+
+const navStyle = css`
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`
+
+const navItemStyle = css`
+  padding: 0 15px;
+`
+
+const logoStyle = css`
+  width: 50px;
+  height: auto;
+`
+
+const numberStyle = css`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: ${theme.colors.orange};
+`
+
+const linkStyle = (isHovered: boolean) => css`
+  color: ${isHovered ? theme.colors.orange : theme.colors.white};
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s;
+`

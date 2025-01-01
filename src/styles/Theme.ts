@@ -3,6 +3,8 @@ const theme = {
     background: '#1e1e1e',
     white: '#fff',
     gray: '#393939',
+    darkgray: '#111',
+    black: '#000',
     orange: '#ff9500'
   },
   fontSize: {

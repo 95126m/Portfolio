@@ -1,11 +1,27 @@
 import React from 'react'
 import { css } from '@emotion/react'
+import { motion } from 'framer-motion'
+import image1 from '../assets/mazi1.png'
 import theme from '../styles/Theme'
 
 const Project3: React.FC = () => {
+  
   return (
     <div css={wrapperStyle}>
-      <div css={contentStyle}>
+      <motion.div
+        css={contentStyle}
+        initial={{
+          opacity: 0,
+          x: -200
+        }}
+        whileInView={{
+          opacity: 1,
+          x: 0
+        }}
+        transition={{
+          type: 'spring',
+          delay: 1
+        }}>
         <div className="text-section">
           <div className="first-section">
             <p>MOBILE</p>
@@ -47,13 +63,6 @@ const Project3: React.FC = () => {
           </div>
           <div css={buttonWrapperStyle}>
             <a
-              href="https://sysmetic.kr/"
-              target="_blank"
-              rel="noopener noreferrer"
-              css={buttonStyle}>
-              웹사이트 보기
-            </a>
-            <a
               href="https://github.com/95126m/BeginAgain"
               target="_blank"
               rel="noopener noreferrer"
@@ -62,15 +71,26 @@ const Project3: React.FC = () => {
             </a>
           </div>
         </div>
-        <div className="image-section">
-          <div css={imageStyle}>이미지 삽입</div>
-          <div>
-            <div css={subImageStyle}>이미지 삽입</div>
-            <div css={subImageStyle}>이미지 삽입</div>
-            <div css={subImageStyle}>이미지 삽입</div>
-          </div>
-        </div>
-      </div>
+        <motion.div
+          className="image-section"
+          initial={{
+            opacity: 0,
+            x: 200
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0
+          }}
+          transition={{
+            type: 'spring',
+            delay: 1
+          }}>
+          <img
+            src={image1}
+            alt="img1"
+            css={imageStyle}></img>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
@@ -80,7 +100,7 @@ const wrapperStyle = css`
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding: 0 4rem;
+  padding: 0 10rem;
 `
 
 const contentStyle = css`
@@ -205,21 +225,20 @@ const imageStyle = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 350px;
+  height: 600px;
+  border-radius: 6px;
   background-color: ${theme.colors.gray};
   color: ${theme.colors.white};
   font-size: ${theme.fontSize.xs};
-`
-
-const subImageStyle = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(33.33% - 10px);
-  height: 150px;
-  background-color: ${theme.colors.gray};
-  color: ${theme.colors.white};
-  font-size: ${theme.fontSize.xs};
+  object-fit: cover;
+  z-index: 2;
+  position: relative;
+  filter: brightness(0.2);
+  transition: 0.5s;
+  &:hover {
+    filter: brightness(1);
+    transform: scale(1.05);
+  }
 `
 
 export default Project3

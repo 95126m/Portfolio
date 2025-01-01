@@ -1,12 +1,27 @@
 import React from 'react'
 import { css } from '@emotion/react'
+import { motion } from 'framer-motion'
 import theme from '../styles/Theme'
+import image1 from '../assets/sysmetic1.png'
 
 const Project2: React.FC = () => {
   return (
     <div css={wrapperStyle}>
       <div css={contentStyle}>
-        <div className="text-section">
+        <motion.div
+          className="text-section"
+          initial={{
+            opacity: 0,
+            x: -200
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0
+          }}
+          transition={{
+            type: 'spring',
+            delay: 1
+          }}>
           <div className="first-section">
             <p>WEB</p>
             <h1>SYSMETIC</h1>
@@ -65,15 +80,27 @@ const Project2: React.FC = () => {
               깃허브
             </a>
           </div>
-        </div>
-        <div className="image-section">
-          <div css={imageStyle}>이미지 삽입</div>
-          <div>
-            <div css={subImageStyle}>이미지 삽입</div>
-            <div css={subImageStyle}>이미지 삽입</div>
-            <div css={subImageStyle}>이미지 삽입</div>
-          </div>
-        </div>
+        </motion.div>
+        <motion.div
+          className="image-section"
+          initial={{
+            opacity: 0,
+            x: 200
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0
+          }}
+          transition={{
+            type: 'spring',
+            delay: 1
+          }}>
+          <img
+            src={image1}
+            alt="img1"
+            css={imageStyle}
+          />
+        </motion.div>
       </div>
     </div>
   )
@@ -84,7 +111,7 @@ const wrapperStyle = css`
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding: 0 4rem;
+  padding: 0 10rem;
 `
 
 const contentStyle = css`
@@ -193,7 +220,6 @@ const buttonStyle = css`
   color: ${theme.colors.white};
   border: 1px solid ${theme.colors.white};
   padding: 10px 20px;
-
   border-radius: 0;
   cursor: pointer;
 
@@ -209,21 +235,20 @@ const imageStyle = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 350px;
+  height: 450px;
+  border-radius: 6px;
   background-color: ${theme.colors.gray};
   color: ${theme.colors.white};
   font-size: ${theme.fontSize.xs};
-`
-
-const subImageStyle = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(33.33% - 10px);
-  height: 150px;
-  background-color: ${theme.colors.gray};
-  color: ${theme.colors.white};
-  font-size: ${theme.fontSize.xs};
+  object-fit: cover;
+  z-index: 2;
+  position: relative;
+  filter: brightness(0.2);
+  transition: 0.5s;
+  &:hover {
+    filter: brightness(1);
+    transform: scale(1.05);
+  }
 `
 
 export default Project2
