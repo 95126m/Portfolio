@@ -3,9 +3,12 @@ const theme = {
     background: '#1e1e1e',
     white: '#fff',
     gray: '#393939',
+    darkgray: '#111',
+    black: '#000',
     orange: '#ff9500'
   },
   fontSize: {
+    xxxxs: '16px',
     xxxs: '20px',
     xxs: '24px',
     xs: '28px',
