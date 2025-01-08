@@ -45,6 +45,7 @@ const Contact: React.FC = () => {
           </p>
           <div
             css={iconWrapperStyle}
+            className="cursor-hover"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={handleEmailClick}>
@@ -81,7 +82,7 @@ const wrapperStyle = css`
 
   .wrapper {
     h1 {
-      padding-bottom: 20px;
+      padding-bottom: 10px;
       font-size: ${theme.fontSize.xxl};
     }
     p {

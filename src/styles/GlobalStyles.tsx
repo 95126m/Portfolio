@@ -29,8 +29,32 @@ const GlobalStyles: React.FC<GlobalStylesProps> = ({ isLoading }) => {
           box-sizing: border-box;
         }
 
+        @font-face {
+          font-family: 'Freesentation-9Black';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2')
+            format('woff2');
+          font-weight: normal;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'S-CoreDream-3Light';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+            format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'STUNNING-Bd';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-2@1.0/STUNNING-Bd.woff2')
+            format('woff2');
+          font-weight: normal;
+          font-style: normal;
+        }
+
         body {
-          font-family: 'Arial', sans-serif;
+          font-family: 'Freesentation-9Black', sans-serif;
           color: ${theme.colors.white};
           width: 100%;
           height: 100%;
@@ -39,6 +63,12 @@ const GlobalStyles: React.FC<GlobalStylesProps> = ({ isLoading }) => {
           margin: 0;
           padding: 0;
           position: relative;
+        }
+
+        p,
+        span,
+        div {
+          font-family: 'S-CoreDream-3Light';
         }
 
         body::before {
@@ -57,7 +87,10 @@ const GlobalStyles: React.FC<GlobalStylesProps> = ({ isLoading }) => {
         }
 
         h1,
-        h2,
+        h2 {
+          font-family: 'STUNNING-Bd', 'Roboto';
+        }
+
         h3,
         h4,
         h5,
@@ -93,7 +126,7 @@ const GlobalStyles: React.FC<GlobalStylesProps> = ({ isLoading }) => {
 
         button:hover,
         a:hover {
-          cursor: none; 
+          cursor: none;
         }
 
         button:focus,

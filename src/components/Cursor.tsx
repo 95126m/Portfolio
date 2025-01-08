@@ -14,7 +14,7 @@ const Cursor: React.FC = () => {
 
     const handleHover = (e: MouseEvent) => {
       const target = e.target as HTMLElement
-      if (target.closest('button, a')) {
+      if (target.closest('button, a, .cursor-hover')) {
         cursor.classList.add('hover')
       } else {
         cursor.classList.remove('hover')
@@ -36,9 +36,10 @@ const Cursor: React.FC = () => {
   return null
 }
 
+
 const cursorStyle = css`
-  body {
-    cursor: none;
+  * {
+    cursor: none !important;
   }
 
   #custom-cursor {
@@ -50,12 +51,13 @@ const cursorStyle = css`
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    mix-blend-mode: difference;
-    transition: background-color 0.2s ease, transform 0.1s ease-out;
+    transition:
+      background-color 0.2s ease,
+      transform 0.1s ease-out;
   }
 
   #custom-cursor.hover {
-    background-color: rgba(0, 102, 255, 0.8); 
+    background-color: rgba(0, 102, 255, 0.8);
     transform: scale(1.5);
   }
 `

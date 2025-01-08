@@ -5,7 +5,6 @@ import image1 from '../assets/mazi1.png'
 import theme from '../styles/Theme'
 
 const Project3: React.FC = () => {
-  
   return (
     <div css={wrapperStyle}>
       <motion.div
@@ -49,16 +48,15 @@ const Project3: React.FC = () => {
           <div className="fourth-section">
             <h2>작업 기여도</h2>
             <li>
-              여러 팀원들의 중도하차에도 흔들림 없이 작업하여 프로젝트 진행에
-              차질이 생기지 않도록 하였습니다.
+              잦은 변동 상황에도 안정적으로 작업을 이어가며 프로젝트가
+              원활하게 진행되도록 했습니다.
             </li>
             <li>
-              와이어프레임을 디테일하게 작업하여 디자인 작업의 시간을
-              앞당겼습니다.
+              디테일한 와이어프레임을 제작해 디자인 작업 시간을 단축했습니다.
             </li>
             <li>
-              유저플로우를 최대한 상세하게 제작하여 작업 진행에 있어 수월하도록
-              하였습니다.
+              상세한 유저 플로우를 설계해 개발 과정이 더욱 수월해지도록
+              지원했습니다.
             </li>
           </div>
           <div css={buttonWrapperStyle}>

@@ -12,7 +12,7 @@ const Home = () => {
       hidden: { x: '-100vw', rotate: -360, opacity: 0 },
       visible: {
         x: 14,
-        y: 240,
+        y: 190,
         rotate: 0,
         opacity: 1,
         transition: {
@@ -27,7 +27,7 @@ const Home = () => {
       hidden: { y: '-100vh', rotate: 360, opacity: 0 },
       visible: {
         x: 5,
-        y: 50,
+        y: 0,
         rotate: 0,
         opacity: 1,
         transition: {
@@ -42,7 +42,7 @@ const Home = () => {
       hidden: { x: '100vw', rotate: -360, opacity: 0 },
       visible: {
         x: 187,
-        y: 110,
+        y: 58,
         rotate: 0,
         opacity: 1,
         transition: {
@@ -57,7 +57,7 @@ const Home = () => {
       hidden: { y: '100vh', rotate: 360, opacity: 0 },
       visible: {
         x: 187,
-        y: 251,
+        y: 202,
         rotate: 0,
         opacity: 1,
         transition: {
@@ -87,34 +87,34 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.8, delay: 0.1, ease: 'easeInOut' }}>
-            환영합니다!
+            안녕하세요.
           </motion.h1>
 
-          <motion.p
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeInOut' }}>
             어디에나 어우러질 수 있는 퍼즐같은
-          </motion.p>
+          </motion.h2>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.8, delay: 0.7, ease: 'easeInOut' }}>
-            <motion.span
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9, ease: 'easeInOut' }}>
               프론트엔드
-            </motion.span>
-            <motion.span
+            </motion.h2>
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.1, ease: 'easeInOut' }}>
               김영은입니다.
-            </motion.span>
+            </motion.h2>
           </motion.div>
 
           <motion.span
@@ -177,7 +177,7 @@ const wrapperStyle = css`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  padding-top: 14vh;
+  padding-top: 24vh;
   padding-left: 18vw;
 
   .content {
@@ -197,24 +197,25 @@ const wrapperStyle = css`
       margin-bottom: 6vh;
     }
 
-    p {
+    h2 {
       font-weight: ${theme.fontWeight.bold};
       font-size: ${theme.fontSize.sm};
       color: ${theme.colors.gray};
-      margin: 0;
+      margin-bottom: 2vh;
     }
 
     div {
       display: flex;
       gap: 16px;
-      
-      span {
+
+      h2 {
         margin: 0;
         font-weight: ${theme.fontWeight.bold};
         font-size: ${theme.fontSize.lg};
+        color: ${theme.colors.white};
       }
 
-      span:first-child {
+      h2:first-child {
         color: ${theme.colors.orange};
       }
     }

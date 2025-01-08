@@ -32,7 +32,7 @@ const wrapperStyle = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 19rem;
+  padding: 20rem;
 `
 
 const textStyle = css`

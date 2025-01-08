@@ -25,7 +25,7 @@ const Loading: React.FC<LoadingProps> = ({ progress }) => {
           y: -40
         }}
       />
-      <motion.span
+      <motion.h2
         css={textStyle}
         animate={{
           color: [theme.colors.white, theme.colors.orange, theme.colors.orange],
@@ -36,7 +36,7 @@ const Loading: React.FC<LoadingProps> = ({ progress }) => {
           repeatType: 'reverse',
           ease: 'easeInOut',
         }}
-      >{Math.floor(progress)}%</motion.span>
+      >{Math.floor(progress)}%</motion.h2>
     </div>
   )
 }

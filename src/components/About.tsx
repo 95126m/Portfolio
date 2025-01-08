@@ -1,106 +1,155 @@
 import { css } from '@emotion/react'
+import React, { useState } from 'react'
 import theme from '../styles/Theme'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import StyledCursor from './Cursor'
 
 const About: React.FC = () => {
+  const [openSection, setOpenSection] = useState<
+    null | 'first' | 'second' | 'third'
+  >(null)
+
+  const handleOpen = (section: 'first' | 'second' | 'third') => {
+    setOpenSection(prev => (prev === section ? null : section))
+  }
+
   return (
-    <div css={wrapperStyle}>
-      {/* 첫 번째 섹션 */}
-      <motion.div
-        className="first-section"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0 }}
-        viewport={{ once: false, amount: 0.1 }}
-        transition={{ duration: 1, ease: 'easeInOut' }}
-      >
+    <>
+      <StyledCursor />
+      <div css={wrapperStyle}>
+        {/* 첫 번째 섹션 */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="section"
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-        >
-          <span>프론트엔드</span>
-          <span>에 빠지게 된 이유</span>
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 1, ease: 'easeInOut' }}>
+          <motion.div
+            className="header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}>
+            <div css={headerContentStyle}>
+              <h2>프론트엔드</h2>
+              <h2>에 빠지게 된 이유</h2>
+              <motion.div
+                onClick={() => handleOpen('first')}
+                css={iconStyle}
+                className="cursor-hover"
+                animate={{ rotate: openSection === 'first' ? 180 : 0 }}
+                transition={{ duration: 0.3 }}>
+                <KeyboardArrowDownIcon />
+              </motion.div>
+            </div>
+          </motion.div>
+          <AnimatePresence>
+            {openSection === 'first' && (
+              <motion.p
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8, delay: 0.1 }}>
+                처음 관심을 갖게 된 계기는 단순한 우연이었습니다.
+                <br />
+                제가 좋아하는 게임은 매 이벤트마다 신선하고 재미있는 반응형
+                웹사이트를 선보였고,
+                <br />그 과정에서 코딩만으로 애니메이션을 구현할 수 있다는 점이
+                저에게 큰 매력으로 다가왔습니다.
+              </motion.p>
+            )}
+          </AnimatePresence>
         </motion.div>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          멈춰있지 않은 반응형 이벤트 웹사이트를 보며, 웹사이트만으로도 사람의
-          마음을 움직일 수 있는 것에 흥미를 느꼈습니다.
-        </motion.p>
-      </motion.div>
 
-      {/* 두 번째 섹션 */}
-      <motion.div
-        className="second-section"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0 }}
-        viewport={{ once: false, amount: 1 }}
-        transition={{ duration: 1, ease: 'easeInOut' }}
-      >
+        {/* 두 번째 섹션 */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="section"
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-        >
-          <span>새로운 것을 알아가는 </span>
-          <span>즐거움</span>
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 1, ease: 'easeInOut' }}>
+          <motion.div
+            className="header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}>
+            <div css={headerContentStyle}>
+              <h2>새로운 것</h2>
+              <h2>에 대한 성취감</h2>
+              <motion.div
+                onClick={() => handleOpen('second')}
+                css={iconStyle}
+                className="cursor-hover"
+                animate={{ rotate: openSection === 'second' ? 180 : 0 }}
+                transition={{ duration: 0.3 }}>
+                <KeyboardArrowDownIcon />
+              </motion.div>
+            </div>
+          </motion.div>
+          <AnimatePresence>
+            {openSection === 'second' && (
+              <motion.p
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8, delay: 0.1 }}>
+                새로운 언어를 배우며 느낀 성취감과 흥미는 저에게 큰 보람을
+                주었습니다.
+                <br />
+                끊임없이 새로운 라이브러리와 기술이 등장하기 때문에 지속적인
+                학습이 필수적입니다.
+                <br />
+                이러한 환경은 성취감을 중요하게 생각하는 제게 큰 동기부여가
+                되었습니다.
+              </motion.p>
+            )}
+          </AnimatePresence>
         </motion.div>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          새로운 언어를 접하며 초반에는 눈앞이 어지러웠고, 협업을 하며
-          팀원들에게 피해를 주면 안된다는 생각에 심적으로 불안했던 시기를
-          겪었습니다.
-          <br />
-          하지만 새로운 라이브러리 혹은 흥미로운 애니메이션들의 향연에 배움이
-          막연하게 스트레스로 다가오지 않았고, 오히려 더 흥미가 생겼던 것
-          같습니다.
-        </motion.p>
-      </motion.div>
 
-      {/* 세 번째 섹션 */}
-      <motion.div
-        className="third-section"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0 }}
-        viewport={{ once: false, amount: 1 }}
-        transition={{ duration: 1, ease: 'easeInOut' }}
-      >
+        {/* 세 번째 섹션 */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="section"
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-        >
-          <span>팀</span>
-          <span>이 주는 안정감</span>
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 1, ease: 'easeInOut' }}>
+          <motion.div
+            className="header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}>
+            <div css={headerContentStyle}>
+              <h2>함께</h2>
+              <h2>만드는 가치</h2>
+              <motion.div
+                onClick={() => handleOpen('third')}
+                css={iconStyle}
+                className="cursor-hover"
+                animate={{ rotate: openSection === 'third' ? 180 : 0 }}
+                transition={{ duration: 0.3 }}>
+                <KeyboardArrowDownIcon />
+              </motion.div>
+            </div>
+          </motion.div>
+          <AnimatePresence>
+            {openSection === 'third' && (
+              <motion.p
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8, delay: 0.1 }}>
+                개발은 마라톤과 같습니다.
+                <br />
+                각 팀의 작업이 이어지는 개발에서는 역량과 책임감이 중요합니다.
+                <br />
+                팀워크를 통해 서로를 보완하며 긍정적인 시너지가 생깁니다.
+                <br />이 경험들은 저에게 배움과 동기부여가 되었습니다.
+              </motion.p>
+            )}
+          </AnimatePresence>
         </motion.div>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          예전 근무지에서는 혼자서 근무했기에, 배울 수 있는 곳이 없었습니다.
-          <br />
-          하지만 프론트엔드라는 직군은 팀원이 존재하여 배울수도 있고, 의지,
-          도움도 서로 나눌 수 있다는 점이 매력적으로 다가왔습니다.
-          <br />저 또한 타인에게 도움을 줄 수 있다는 점이 어려운 공부를 잊게
-          해주는 하나의 원동력이 된 것 같습니다.
-        </motion.p>
-      </motion.div>
-    </div>
+      </div>
+    </>
   )
 }
 
@@ -113,26 +162,35 @@ const wrapperStyle = css`
   width: 100%;
   padding: 9rem 18vw;
 
-  .first-section,
-  .second-section,
-  .third-section {
-    margin-top: 80px;
-
-    div {
-      display: flex;
-      gap: 8px;
-      span {
-        font-size: ${theme.fontSize.xs};
-        font-weight: ${theme.fontWeight.bold};
-      }
-      span:first-child {
-        color: ${theme.colors.orange};
-      }
-    }
+  .section {
+    margin-top: 7vh;
+    line-height: 35px;
+    height: 150px;
 
     p {
       font-size: ${theme.fontSize.xxxs};
-      margin-top: 12px;
+      margin-top: 0;
     }
+  }
+`
+
+const headerContentStyle = css`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  h2 {
+    font-size: ${theme.fontSize.xs};
+  }
+  h2:first-child {
+    color: ${theme.colors.orange};
+  }
+`
+
+const iconStyle = css`
+  cursor: pointer;
+  font-size: 36px;
+
+  &:hover {
+    color: ${theme.colors.orange};
   }
 `
