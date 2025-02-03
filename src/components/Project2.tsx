@@ -61,13 +61,6 @@ const Project2: React.FC = () => {
           </div>
           <div css={buttonWrapperStyle}>
             <a
-              href="https://sysmetic.kr/"
-              target="_blank"
-              rel="noopener noreferrer"
-              css={buttonStyle}>
-              웹사이트 보기
-            </a>
-            <a
               href="https://github.com/95126m/FinalProject_Be3C_FE"
               target="_blank"
               rel="noopener noreferrer"
