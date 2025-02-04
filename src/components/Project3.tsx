@@ -1,26 +1,42 @@
-import React from 'react'
+import { useState } from 'react'
 import { css } from '@emotion/react'
 import { motion } from 'framer-motion'
 import image1 from '../assets/mazi1.png'
+import image2 from '../assets/mazi2.gif'
+import image3 from '../assets/mazi3.gif'
+import image4 from '../assets/mazi4.gif'
+import image5 from '../assets/mazi5.gif'
+import Modal from '../components/Modal'
 import theme from '../styles/Theme'
 
+const modalMedia = [image1, image2, image3, image4, image5]
+
 const Project3: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const openModal = (index: number) => {
+    setCurrentIndex(index)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => setIsModalOpen(false)
+
+  const prevMedia = () => {
+    setCurrentIndex(prev => (prev === 0 ? modalMedia.length - 1 : prev - 1))
+  }
+
+  const nextMedia = () => {
+    setCurrentIndex(prev => (prev === modalMedia.length - 1 ? 0 : prev + 1))
+  }
+
   return (
     <div css={wrapperStyle}>
       <motion.div
         css={contentStyle}
-        initial={{
-          opacity: 0,
-          x: -200
-        }}
-        whileInView={{
-          opacity: 1,
-          x: 0
-        }}
-        transition={{
-          type: 'spring',
-          delay: 1
-        }}>
+        initial={{ opacity: 0, x: -200 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ type: 'spring', delay: 1 }}>
         <div className="text-section">
           <div className="first-section">
             <p>MOBILE</p>
@@ -48,8 +64,8 @@ const Project3: React.FC = () => {
           <div className="fourth-section">
             <h2>작업 기여도</h2>
             <li>
-              잦은 변동 상황에도 안정적으로 작업을 이어가며 프로젝트가
-              원활하게 진행되도록 했습니다.
+              잦은 변동 상황에도 안정적으로 작업을 이어가며 프로젝트가 원활하게
+              진행되도록 했습니다.
             </li>
             <li>
               디테일한 와이어프레임을 제작해 디자인 작업 시간을 단축했습니다.
@@ -71,27 +87,32 @@ const Project3: React.FC = () => {
         </div>
         <motion.div
           className="image-section"
-          initial={{
-            opacity: 0,
-            x: 200
-          }}
-          whileInView={{
-            opacity: 1,
-            x: 0
-          }}
-          transition={{
-            type: 'spring',
-            delay: 1
-          }}>
+          initial={{ opacity: 0, x: 200 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ type: 'spring', delay: 1 }}>
           <img
             src={image1}
             alt="img1"
-            css={imageStyle}></img>
+            css={imageStyle}
+            onClick={() => openModal(0)}
+          />
         </motion.div>
       </motion.div>
+
+      {isModalOpen && (
+        <Modal
+          images={modalMedia}
+          currentIndex={currentIndex}
+          onClose={closeModal}
+          onPrev={prevMedia}
+          onNext={nextMedia}
+        />
+      )}
     </div>
   )
 }
+
+export default Project3
 
 const wrapperStyle = css`
   display: flex;
@@ -233,10 +254,10 @@ const imageStyle = css`
   position: relative;
   filter: brightness(0.2);
   transition: 0.5s;
+  cursor: pointer;
+
   &:hover {
     filter: brightness(1);
     transform: scale(1.05);
   }
 `
-
-export default Project3
