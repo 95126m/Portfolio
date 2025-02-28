@@ -1,10 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/react'
 import { motion } from 'framer-motion'
-import image1 from '../assets/daldalog1.jpg'
+import image1 from '../assets/designer-portfolio.jpg'
 import theme from '../styles/Theme'
 
-const Project4: React.FC = () => {
+const Project5: React.FC = () => {
   return (
     <div css={wrapperStyle}>
       <motion.div
@@ -24,9 +24,9 @@ const Project4: React.FC = () => {
         <div className="text-section">
           <div className="first-section">
             <p>WEB</p>
-            <h1>DALDALOG</h1>
-            <span>콘텐츠 퍼블리싱 플랫폼 (블로그)</span>
-            <p>2025.01.10 - 2025.02.03</p>
+            <h1>PORTFOLIO</h1>
+            <span>포트폴리오 사이트</span>
+            <p>2025.02.12 - 2025.02.28</p>
           </div>
           <div className="second-section">
             <h2>프로젝트 규모</h2>
@@ -37,37 +37,42 @@ const Project4: React.FC = () => {
             <div>
               <span>React</span>
               <span>Typescript</span>
-              <span>Zustand</span>
               <span>Vite</span>
               <span>Emotion</span>
-              <span>Firebase</span>
+              <span>Styled-components</span>
             </div>
           </div>
           <div className="fourth-section">
             <h2>작업 기여도</h2>
             <li>
-              Zustand를 활용하여 코드의 가독성을 개선하고, 유지보수성을
-              향상시켰습니다.
+              유려한 애니메이션 효과를 적용하여 각 섹션이 자연스럽게 전환되도록
+              디자인의 완성도를
+              <br />
+              극대화하였습니다.
             </li>
             <li>
-              게시글뿐만 아니라 Todos 및 Scheduler 기능을 추가하여 블로그의
-              활용성을 극대화하고, 사용자 경험을 확장했습니다.
+              새로운 스타일의 디자인을 탐구하며, 세련된 스타일링과 정교한 필터
+              효과를 추가하여
+              <br />
+              시각적 완성도를 향상시켰습니다.
             </li>
             <li>
-              Grid 레이아웃과 애니메이션 효과를 적용하여 디자인 완성도를 높이고,
-              시각적인 몰입감을 강화했습니다.
+              유지보수성을 극대화하기 위해 직관적이고 체계적인 변수명을
+              도입하였으며, 섹션별 구획을
+              <br />
+              명확히 분할하여 체계적으로 구성하였습니다.
             </li>
           </div>
           <div css={buttonWrapperStyle}>
             <a
-              href="https://daldalog.vercel.app/"
+              href="https://portfolio-designer-three.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               css={buttonStyle}>
               웹사이트 보기
             </a>
             <a
-              href="https://github.com/95126m/Daldalog"
+              href="https://github.com/95126m/portfolio-designer"
               target="_blank"
               rel="noopener noreferrer"
               css={buttonStyle}>
@@ -246,4 +251,4 @@ const imageStyle = css`
   }
 `
 
-export default Project4
+export default Project5

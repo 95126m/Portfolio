@@ -209,6 +209,7 @@ const contentStyle = css`
     }
     li {
       font-size: ${theme.fontSize.xxxxs};
+      line-height: 30px;
     }
   }
 `
@@ -244,7 +245,7 @@ const imageStyle = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 600px;
+  height: 500px;
   border-radius: 6px;
   background-color: ${theme.colors.gray};
   color: ${theme.colors.white};

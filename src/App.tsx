@@ -8,6 +8,7 @@ import Project1 from './components/Project1'
 import Project2 from './components/Project2'
 import Project3 from './components/Project3'
 import Project4 from './components/Project4'
+import Project5 from './components/Project5'
 import Contact from './components/Contact'
 import Loading from './components/Loading'
 import Cursor from './components/Cursor'
@@ -75,6 +76,10 @@ const App: React.FC = () => {
                 
               <section id="project4">
                 <Project4 />
+                </section>
+                
+              <section id="project5">
+                <Project5 />
               </section>
 
               <section id="contact">
